@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   stats-server:
-    build: ./statistics
+    build: ./stats-server
     image: statistics_image:latest
     container_name: stats_container
     ports:
@@ -33,7 +33,7 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   ewm-service:
-    build: ./service
+    build: ./ewm-service
     image: service_image:latest
     container_name: serv_container
     ports:
