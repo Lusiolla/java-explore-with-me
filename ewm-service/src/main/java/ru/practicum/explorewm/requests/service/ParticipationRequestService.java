@@ -12,7 +12,7 @@ public interface ParticipationRequestService {
 
     ParticipationRequestDto cancel(Long userId, Long requestId);
 
-    ParticipationRequestDto getUserRequest(Long userId, Long eventId);
+    Collection<ParticipationRequestDto> getByEventIdUserRequests(Long userId, Long eventId);
 
     ParticipationRequestDto confirmParticipation(Long userId, Long eventId, Long reqId);
 

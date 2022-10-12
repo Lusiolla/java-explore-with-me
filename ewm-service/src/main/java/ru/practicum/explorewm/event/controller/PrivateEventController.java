@@ -61,9 +61,9 @@ public class PrivateEventController {
     }
 
     @GetMapping("{eventId}/requests")
-    public ParticipationRequestDto getUserRequest(@NotNull @PathVariable Long userId,
+    public Collection<ParticipationRequestDto> getUserRequest(@NotNull @PathVariable Long userId,
                                                   @NotNull @PathVariable Long eventId) {
-        return requestService.getUserRequest(userId, eventId);
+        return requestService.getByEventIdUserRequests(userId, eventId);
     }
 
     @PatchMapping("{eventId}/requests/{reqId}/confirm")

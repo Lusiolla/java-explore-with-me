@@ -3,6 +3,7 @@ package ru.practicum.explorewm.user.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.explorewm.exception.ObjectAlreadyExistException;
 import ru.practicum.explorewm.exception.ObjectNotFoundException;
 import ru.practicum.explorewm.user.UserMapper;
@@ -20,6 +21,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository repository;
 
     @Override
+    @Transactional
     public UserDto add(User newUser) {
         try {
             return UserMapper.mapToUserDto(repository.save(newUser));
@@ -42,6 +44,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void delete(Long userId) {
         repository.deleteById(userId);
     }

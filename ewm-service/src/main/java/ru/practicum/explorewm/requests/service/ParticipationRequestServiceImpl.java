@@ -99,11 +99,20 @@ public class ParticipationRequestServiceImpl implements ParticipationRequestServ
     }
 
     @Override
-    public ParticipationRequestDto getUserRequest(Long userId, Long eventId) {
-        return RequestMapper.mapToRequestDto(
-                repository.findByRequesterIdAndEventId(userId, eventId)
-                        .orElseThrow(() -> new ObjectNotFoundException("Request not found."))
-        );
+    public Collection<ParticipationRequestDto> getByEventIdUserRequests(Long userId, Long eventId) {
+        userRepository.findById(userId)
+                .orElseThrow(() -> new ObjectNotFoundException("User", userId));
+        Event event = eventRepository.findById(eventId)
+                .orElseThrow(() -> new ObjectNotFoundException("Event", eventId));
+        if (!event.getInitiator().getId().equals(userId)) {
+            throw new ConditionsNotMetException(
+                    "This is not the event initiator."
+            );
+        }
+        return repository.findAllByEventId(eventId)
+                .stream()
+                .map(RequestMapper::mapToRequestDto)
+                .collect(Collectors.toList());
     }
 
     @Override
