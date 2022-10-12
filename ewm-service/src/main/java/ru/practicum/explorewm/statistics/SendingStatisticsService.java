@@ -12,7 +12,7 @@ public class SendingStatisticsService extends BasicStatisticsSender {
 
     private static final String API_PREFIX = "/hit";
 
-    public SendingStatisticsService(@Value("${explore-with-me-statistics.url}") String serverUrl, RestTemplateBuilder builder) {
+    public SendingStatisticsService(@Value("${EXPLORE_WITH_ME_STATS_SERVER_URL}") String serverUrl, RestTemplateBuilder builder) {
         super(
                 builder
                         .uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl + API_PREFIX))
