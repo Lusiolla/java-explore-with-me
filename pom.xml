@@ -23,8 +23,8 @@
 	</properties>
 
 	<modules>
-		<module>service</module>
-		<module>statistics</module>
+		<module>ewm-service</module>
+		<module>ewm-statistics</module>
 	</modules>
 
 	<build>
