@@ -9,7 +9,7 @@ services:
       - POSTGRES_USER=stats
       - POSTGRES_PASSWORD=postgres
 
-  ewm-statistics:
+  stats-server:
     build: ./statistics
     image: statistics_image:latest
     container_name: stats_container
@@ -40,7 +40,7 @@ services:
       - "8080:8080"
     depends_on:
       - db_service
-      - ewm-statistics
+      - stats-server
     environment:
       - EXPLORE_WITH_ME_STATISTICS_URL=http://statistics:9090
       - DB_NAME=service
