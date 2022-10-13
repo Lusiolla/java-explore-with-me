@@ -15,21 +15,21 @@ public interface EventService {
 
     Collection<EventShort> getUserEvents(Long userId, int from, int size);
 
-    EventFull getByIdUserEvent(Long userId, Long eventId);
+    EventDto getByIdUserEvent(Long userId, Long eventId);
 
 
-    EventFull userUpdate(Long userId, EventUpdate updateEvent);
+    EventDto userUpdate(Long userId, EventUpdate updateEvent);
 
-    EventFull add(Long userId, Event event);
+    EventDto add(Long userId, Event event);
 
-    EventFull adminUpdate(Long eventId, AdminEventUpdate updateEvent);
+    EventDto adminUpdate(Long eventId, AdminEventUpdate updateEvent);
 
-    EventFull cancel(Long userId, Long eventId);
+    EventDto cancel(Long userId, Long eventId);
 
     Collection<EventFull> getByParamAdmin(AdminGetEventRequest request);
 
-    EventFull publish(Long eventId);
+    EventPublished publish(Long eventId);
 
-    EventFull reject(Long eventId);
+    EventDto reject(Long eventId);
 
 }

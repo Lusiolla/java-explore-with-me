@@ -140,7 +140,7 @@ public class ParticipationRequestServiceImpl implements ParticipationRequestServ
         }
 
         request.setStatus(Status.CONFIRMED);
-        event.setConfirmedRequests(event.getConfirmedRequests() + 1);
+        //event.setConfirmedRequests(event.getConfirmedRequests() + 1);
         eventRepository.save(event);
 
         if (event.getParticipantLimit() == event.getConfirmedRequests()) {

@@ -20,6 +20,7 @@ import ru.practicum.explorewm.CustomDateTimeSerializer;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.rmi.server.ServerNotActiveException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +85,19 @@ public class ErrorHandlingControllerAdvice extends ResponseEntityExceptionHandle
                 errors);
         return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
+
+    @ExceptionHandler(ServerNotActiveException.class)
+    public ResponseEntity<Object> handleServerNotActive(ServerNotActiveException ex) {
+        ApiError apiError = new ApiError(
+                HttpStatus.INTERNAL_SERVER_ERROR,
+                "Server not active.",
+                ex.getMessage(),
+                LocalDateTime.now(),
+                new ArrayList<>()
+        );
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
+    }
+
 
     @NotNull
     @Override

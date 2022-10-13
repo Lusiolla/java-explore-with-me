@@ -113,7 +113,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public EventFull getByIdUserEvent(Long userId, Long eventId) {
+    public EventDto getByIdUserEvent(Long userId, Long eventId) {
         userRepository.findById(userId).orElseThrow(() -> new ObjectNotFoundException(
                 "User", userId));
         Event event = repository.findById(eventId)
@@ -121,12 +121,12 @@ public class EventServiceImpl implements EventService {
         if (!event.getInitiator().getId().equals(userId)) {
             throw new ConditionsNotMetException("The user is not the creator of this event.");
         }
-        return EventMapper.mapToEventFull(event);
+        return EventMapper.mapToEventAfterUpdate(event);
     }
 
     @Override
     @Transactional
-    public EventFull add(Long userId, Event event) {
+    public EventDto add(Long userId, Event event) {
         User user = userRepository.findById(userId).orElseThrow(() -> new ObjectNotFoundException(
                 "User", userId));
         event.setInitiator(user);
@@ -137,12 +137,12 @@ public class EventServiceImpl implements EventService {
         event.setCategory(category);
         event.setLocation(saveOrFindLocation(event.getLocation()));
 
-        return EventMapper.mapToEventFull(repository.save(event));
+        return EventMapper.mapToEventAfterUpdate(repository.save(event));
     }
 
     @Override
     @Transactional
-    public EventFull adminUpdate(Long eventId, AdminEventUpdate event) {
+    public EventDto adminUpdate(Long eventId, AdminEventUpdate event) {
         Event eventFromRepository = repository.findById(eventId)
                 .orElseThrow(() -> new ObjectNotFoundException("Event", eventId));
         Category category = categoryRepository.findById(event.getCategory())
@@ -150,12 +150,12 @@ public class EventServiceImpl implements EventService {
         Event update = EventMapper.mapToEvent(event, eventFromRepository);
         update.setCategory(category);
 
-        return EventMapper.mapToEventFull(repository.save(update));
+        return EventMapper.mapToEventAfterUpdate(repository.save(update));
     }
 
     @Override
     @Transactional
-    public EventFull userUpdate(Long userId, EventUpdate event) {
+    public EventDto userUpdate(Long userId, EventUpdate event) {
         userRepository.findById(userId)
                 .orElseThrow(() -> new ObjectNotFoundException("User", userId));
         Event eventFromRepository = repository.findById(event.getEventId())
@@ -176,12 +176,12 @@ public class EventServiceImpl implements EventService {
                 update.setState(State.PENDING);
         }
 
-        return EventMapper.mapToEventFull(repository.save(update));
+        return EventMapper.mapToEventAfterUpdate(repository.save(update));
     }
 
     @Override
     @Transactional
-    public EventFull cancel(Long userId, Long eventId) {
+    public EventDto cancel(Long userId, Long eventId) {
         userRepository.findById(userId)
                 .orElseThrow(() -> new ObjectNotFoundException("User", userId));
         Event event = repository.findById(eventId)
@@ -195,7 +195,7 @@ public class EventServiceImpl implements EventService {
             event.setState(State.CANCELED);
         }
 
-        return EventMapper.mapToEventFull(repository.save(event));
+        return EventMapper.mapToEventAfterUpdate(repository.save(event));
     }
 
     @Override
@@ -220,7 +220,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public EventFull publish(Long eventId) {
+    public EventPublished publish(Long eventId) {
         Event event = repository.findById(eventId)
                 .orElseThrow(() -> new ObjectNotFoundException("Event", eventId));
         event.setPublishedOn(LocalDateTime.now());
@@ -230,19 +230,19 @@ public class EventServiceImpl implements EventService {
             );
         }
         event.setState(State.PUBLISHED);
-        return EventMapper.mapToEventFull(repository.save(event));
+        return EventMapper.mapToEventPublished(repository.save(event));
     }
 
     @Override
     @Transactional
-    public EventFull reject(Long eventId) {
+    public EventDto reject(Long eventId) {
         Event event = repository.findById(eventId)
                 .orElseThrow(() -> new ObjectNotFoundException("Event", eventId));
         if (event.getState() == State.PUBLISHED) {
             throw new ConditionsNotMetException("The event should not be published.");
         }
         event.setState(State.CANCELED);
-        return EventMapper.mapToEventFull(repository.save(event));
+        return EventMapper.mapToEventAfterUpdate(repository.save(event));
     }
 
     private Location saveOrFindLocation(Location location) {

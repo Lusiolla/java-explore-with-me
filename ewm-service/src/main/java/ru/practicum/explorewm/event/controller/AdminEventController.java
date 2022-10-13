@@ -4,9 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.explorewm.event.State;
-import ru.practicum.explorewm.event.dto.AdminGetEventRequest;
-import ru.practicum.explorewm.event.dto.AdminEventUpdate;
-import ru.practicum.explorewm.event.dto.EventFull;
+import ru.practicum.explorewm.event.dto.*;
 import ru.practicum.explorewm.event.service.EventService;
 
 import javax.validation.constraints.NotNull;
@@ -43,17 +41,17 @@ public class AdminEventController {
     }
 
     @PutMapping("{eventId}")
-    public EventFull update(@NotNull @PathVariable Long eventId, @RequestBody AdminEventUpdate updateEvent) {
+    public EventDto update(@NotNull @PathVariable Long eventId, @RequestBody AdminEventUpdate updateEvent) {
         return service.adminUpdate(eventId, updateEvent);
     }
 
     @PatchMapping("/{eventId}/publish")
-    public EventFull publish(@NotNull @PathVariable Long eventId) {
+    public EventPublished publish(@NotNull @PathVariable Long eventId) {
         return service.publish(eventId);
     }
 
     @PatchMapping("/{eventId}/reject")
-    public EventFull reject(@NotNull @PathVariable Long eventId) {
+    public EventDto reject(@NotNull @PathVariable Long eventId) {
         return service.reject(eventId);
     }
 

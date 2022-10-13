@@ -15,24 +15,23 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EventFull {
+public class EventDto {
+    private Long id;
     private String annotation;
     private Category category;
-    private int confirmedRequests;
     @JsonSerialize(using = CustomDateTimeSerializer.class)
     private LocalDateTime createdOn;
     private String description;
     @JsonSerialize(using = CustomDateTimeSerializer.class)
     private LocalDateTime eventDate;
-    private Long id;
     private UserShort initiator;
     private LocationDto location;
     private Boolean paid;
     private int participantLimit;
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    private LocalDateTime publishedOn;
     private Boolean requestModeration;
     private State state;
     private String title;
-    private int views;
+
+
+
 }

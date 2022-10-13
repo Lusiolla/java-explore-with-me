@@ -15,7 +15,6 @@ import ru.practicum.explorewm.event.repository.EventRepository;
 import ru.practicum.explorewm.exception.ObjectNotFoundException;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -26,12 +25,11 @@ public class CompilationServiceImpl implements CompilationService {
     @Override
     @Transactional
     public CompilationDto add(CompilationCreate compilation) {
-        return CompilationMapper.mapToCompilationDto(repository.save(CompilationMapper.mapToCompilation(
-                compilation, compilation.getEvents().stream()
-                        .map(id -> eventRepository.findById(id)
-                                .orElseThrow(() -> new ObjectNotFoundException("Event", id)))
-                        .collect(Collectors.toList()))
-        ));
+        return CompilationMapper.mapToCompilationDto(
+                repository.save(CompilationMapper.mapToCompilation(
+                        compilation, eventRepository.findAllById(compilation.getEvents()))
+                )
+        );
     }
 
     @Override

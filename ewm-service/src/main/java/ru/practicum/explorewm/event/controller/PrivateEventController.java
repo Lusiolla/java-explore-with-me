@@ -4,10 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.explorewm.event.EventMapper;
-import ru.practicum.explorewm.event.dto.EventCreate;
-import ru.practicum.explorewm.event.dto.EventFull;
-import ru.practicum.explorewm.event.dto.EventShort;
-import ru.practicum.explorewm.event.dto.EventUpdate;
+import ru.practicum.explorewm.event.dto.*;
 import ru.practicum.explorewm.event.service.EventService;
 import ru.practicum.explorewm.requests.dto.ParticipationRequestDto;
 import ru.practicum.explorewm.requests.service.ParticipationRequestService;
@@ -38,24 +35,24 @@ public class PrivateEventController {
     }
 
     @PatchMapping
-    public EventFull update(@NotNull @PathVariable Long userId, @Valid @RequestBody EventUpdate updateEvent) {
+    public EventDto update(@NotNull @PathVariable Long userId, @Valid @RequestBody EventUpdate updateEvent) {
         return service.userUpdate(userId, updateEvent);
     }
 
     @PostMapping
-    public EventFull add(@NotNull @PathVariable Long userId, @Valid @RequestBody EventCreate event) {
+    public EventDto add(@NotNull @PathVariable Long userId, @Valid @RequestBody EventCreate event) {
         return service.add(userId, EventMapper.mapToEvent(event));
     }
 
     @GetMapping("{eventId}")
-    public EventFull getByIdUserEvent(@NotNull @PathVariable Long userId,
-                             @NotNull @PathVariable Long eventId)    {
+    public EventDto getByIdUserEvent(@NotNull @PathVariable Long userId,
+                                     @NotNull @PathVariable Long eventId)    {
         return service.getByIdUserEvent(userId, eventId);
     }
 
     @PatchMapping("{eventId}")
-    public EventFull cancel(@NotNull @PathVariable Long userId,
-                            @NotNull @PathVariable Long eventId) {
+    public EventDto cancel(@NotNull @PathVariable Long userId,
+                           @NotNull @PathVariable Long eventId) {
 
         return service.cancel(userId, eventId);
     }

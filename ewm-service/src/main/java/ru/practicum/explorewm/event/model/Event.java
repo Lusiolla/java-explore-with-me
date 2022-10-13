@@ -72,7 +72,7 @@ public class Event {
     @Column
     private int views;
 
-    @ManyToMany(mappedBy = "events")
+   @ManyToMany(mappedBy = "events")
     private Collection<Compilation> compilations;
 
 }

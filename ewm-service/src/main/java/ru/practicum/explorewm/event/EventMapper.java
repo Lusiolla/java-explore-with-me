@@ -73,9 +73,60 @@ public class EventMapper {
         response.setState(event.getState());
         response.setTitle(event.getTitle());
         response.setPublishedOn(event.getPublishedOn());
-        response.setViews(event.getViews());
 
         return response;
+    }
+
+    // из entity в afterUpdate
+    public static EventDto mapToEventAfterUpdate(Event event) {
+        return new EventDto(
+                event.getId(),
+                event.getAnnotation(),
+                event.getCategory(),
+                event.getCreatedOn(),
+                event.getDescription(),
+                event.getEventDate(),
+                new UserShort(
+                        event.getInitiator().getId(),
+                        event.getInitiator().getName()
+                ),
+                new LocationDto(
+                        event.getLocation().getLat(),
+                        event.getLocation().getLon()
+                ),
+                event.getPaid(),
+                event.getParticipantLimit(),
+                event.getRequestModeration(),
+                event.getState(),
+                event.getTitle()
+        );
+    }
+
+    // из entity в published
+    public static EventPublished mapToEventPublished(Event event) {
+        return new EventPublished(
+                event.getId(),
+                event.getAnnotation(),
+                event.getCategory(),
+                event.getCreatedOn(),
+                event.getDescription(),
+                event.getEventDate(),
+                new UserShort(
+                        event.getInitiator().getId(),
+                        event.getInitiator().getName()
+                ),
+                new LocationDto(
+                        event.getLocation().getLat(),
+                        event.getLocation().getLon()
+                ),
+                event.getPaid(),
+                event.getParticipantLimit(),
+                event.getPublishedOn(),
+                event.getRequestModeration(),
+                event.getState(),
+                event.getTitle()
+        );
+
     }
 
     // из entity в short

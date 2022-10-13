@@ -5,7 +5,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.explorewm.user.UserMapper;
 import ru.practicum.explorewm.user.dto.UserCreate;
-import ru.practicum.explorewm.user.dto.UserDto;
+import ru.practicum.explorewm.user.model.User;
 import ru.practicum.explorewm.user.service.UserService;
 
 import javax.validation.Valid;
@@ -24,7 +24,7 @@ public class AdminUserController {
     private final UserService service;
 
     @GetMapping
-    public Collection<UserDto> get(
+    public Collection<User> get(
             @RequestParam(name = "ids", required = false) Set<Long> ids,
             @PositiveOrZero @RequestParam(name = "from", defaultValue = "0") Integer from,
             @Positive @RequestParam(name = "size", defaultValue = "10") Integer size
@@ -33,7 +33,7 @@ public class AdminUserController {
     }
 
     @PostMapping
-    public UserDto add(@Valid @RequestBody UserCreate newUser) {
+    public User add(@Valid @RequestBody UserCreate newUser) {
         return service.add(UserMapper.mapToUser(newUser));
     }
 
