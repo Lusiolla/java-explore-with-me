@@ -224,7 +224,7 @@ public class EventServiceImpl implements EventService {
         Event event = repository.findById(eventId)
                 .orElseThrow(() -> new ObjectNotFoundException("Event", eventId));
         event.setPublishedOn(LocalDateTime.now());
-        if (!event.getPublishedOn().plusMinutes(59).isBefore(event.getEventDate())) {
+        if (!event.getPublishedOn().plusHours(1).isBefore(event.getEventDate())) {
             throw new ConditionsNotMetException(
                     "The start date of the event must be no earlier than an hour from the date of publication."
             );
@@ -266,5 +266,4 @@ public class EventServiceImpl implements EventService {
                 throw new RuntimeException();
         }
     }
-
 }
