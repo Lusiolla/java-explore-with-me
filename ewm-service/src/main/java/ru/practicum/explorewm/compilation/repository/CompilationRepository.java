@@ -1,4 +1,4 @@
-package ru.practicum.explorewm.compilation;
+package ru.practicum.explorewm.compilation.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

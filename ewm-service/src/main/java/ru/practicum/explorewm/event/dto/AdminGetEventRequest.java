@@ -3,8 +3,8 @@ package ru.practicum.explorewm.event.dto;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import ru.practicum.explorewm.CustomDateTimeDeserializer;
-import ru.practicum.explorewm.event.State;
+import ru.practicum.explorewm.dataio.CustomDateTimeDeserializer;
+import ru.practicum.explorewm.event.state.State;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;

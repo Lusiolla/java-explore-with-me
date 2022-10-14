@@ -1,4 +1,4 @@
-package ru.practicum.explorewm.event;
+package ru.practicum.explorewm.event.state;
 
 public enum State {
     PENDING, PUBLISHED, CANCELED

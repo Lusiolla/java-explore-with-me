@@ -26,7 +26,6 @@
 		<module>ewm-service</module>
 		<module>stats-server</module>
 	</modules>
-
 	<build>
 		<pluginManagement>
 			<plugins>

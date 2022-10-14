@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.explorewithme.StatisticsMapper;
+import ru.practicum.explorewithme.mapper.StatisticsMapper;
 import ru.practicum.explorewithme.dto.EndpointHitCreate;
 import ru.practicum.explorewithme.dto.ViewStats;
 import ru.practicum.explorewithme.model.EndpointHit;

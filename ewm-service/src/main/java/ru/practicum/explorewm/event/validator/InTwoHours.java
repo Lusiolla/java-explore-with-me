@@ -1,4 +1,4 @@
-package ru.practicum.explorewm.event;
+package ru.practicum.explorewm.event.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

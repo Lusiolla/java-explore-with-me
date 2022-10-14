@@ -3,13 +3,14 @@ package ru.practicum.explorewm.category.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import ru.practicum.explorewm.category.CategoryMapper;
-import ru.practicum.explorewm.category.CategoryRepository;
+import ru.practicum.explorewm.category.mapper.CategoryMapper;
+import ru.practicum.explorewm.category.repository.CategoryRepository;
 import ru.practicum.explorewm.category.dto.CategoryDto;
 import ru.practicum.explorewm.category.model.Category;
 import ru.practicum.explorewm.exception.ObjectAlreadyExistException;
 import ru.practicum.explorewm.exception.ObjectNotFoundException;
 
+import javax.persistence.PersistenceException;
 import java.util.Collection;
 
 @Service
@@ -22,7 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryDto add(Category category) {
         try {
             return CategoryMapper.mapToCategoryDto(repository.save(category));
-        } catch (RuntimeException e) {
+        } catch (PersistenceException e) {
             throw new ObjectAlreadyExistException("name", category.getName());
         }
     }

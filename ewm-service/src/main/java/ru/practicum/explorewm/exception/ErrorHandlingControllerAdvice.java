@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import ru.practicum.explorewm.CustomDateTimeSerializer;
+import ru.practicum.explorewm.dataio.CustomDateTimeSerializer;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -126,7 +126,6 @@ public class ErrorHandlingControllerAdvice extends ResponseEntityExceptionHandle
 
     @Data
     private static class ApiError {
-
         private HttpStatus status;
         private String reason;
         private String message;

@@ -1,6 +1,5 @@
 package ru.practicum.explorewm.compilation.controller;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +32,4 @@ public class PublicCompilationController {
     public CompilationDto getById(@NotNull @PathVariable Long compId) {
         return service.getById(compId);
     }
-
-
 }

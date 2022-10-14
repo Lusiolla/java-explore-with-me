@@ -36,5 +36,4 @@ public class PrivateParticipationRequestController {
 
         return service.cancel(userId, requestId);
     }
-
 }

@@ -3,7 +3,7 @@ package ru.practicum.explorewm.category.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.explorewm.category.CategoryMapper;
+import ru.practicum.explorewm.category.mapper.CategoryMapper;
 import ru.practicum.explorewm.category.dto.CategoryDto;
 import ru.practicum.explorewm.category.dto.CreateCategory;
 import ru.practicum.explorewm.category.service.CategoryService;

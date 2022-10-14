@@ -2,8 +2,8 @@ package ru.practicum.explorewithme.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.practicum.explorewithme.StatisticsMapper;
-import ru.practicum.explorewithme.StatisticsRepository;
+import ru.practicum.explorewithme.mapper.StatisticsMapper;
+import ru.practicum.explorewithme.repository.StatisticsRepository;
 import ru.practicum.explorewithme.dto.StatsCount;
 import ru.practicum.explorewithme.dto.ViewStats;
 import ru.practicum.explorewithme.model.EndpointHit;

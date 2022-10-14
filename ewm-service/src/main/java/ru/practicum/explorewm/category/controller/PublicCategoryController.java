@@ -23,7 +23,6 @@ public class PublicCategoryController {
     public Collection<CategoryDto> getCategories(
             @PositiveOrZero @RequestParam(name = "from", defaultValue = "0") Integer from,
             @Positive @RequestParam(name = "size", defaultValue = "10") Integer size) {
-
         return service.getCategories(from, size);
     }
 

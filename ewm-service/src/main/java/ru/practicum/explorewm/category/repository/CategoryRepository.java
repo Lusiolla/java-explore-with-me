@@ -1,4 +1,4 @@
-package ru.practicum.explorewm.category;
+package ru.practicum.explorewm.category.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.practicum.explorewm.category.model.Category;

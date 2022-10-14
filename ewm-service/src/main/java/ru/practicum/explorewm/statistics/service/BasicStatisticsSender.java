@@ -1,4 +1,4 @@
-package ru.practicum.explorewm.statistics;
+package ru.practicum.explorewm.statistics.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
@@ -11,9 +11,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public class BasicStatisticsSender {
-
     protected final RestTemplate rest;
-
 
     protected <T> ResponseEntity<Object> post(String path, T body) {
 

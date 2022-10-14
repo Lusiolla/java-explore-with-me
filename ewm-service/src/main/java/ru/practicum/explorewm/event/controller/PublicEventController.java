@@ -3,7 +3,7 @@ package ru.practicum.explorewm.event.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.explorewm.event.SortRequest;
+import ru.practicum.explorewm.event.dto.SortRequest;
 import ru.practicum.explorewm.event.dto.EventFull;
 import ru.practicum.explorewm.event.dto.EventShort;
 import ru.practicum.explorewm.event.dto.PublicGetEventRequest;

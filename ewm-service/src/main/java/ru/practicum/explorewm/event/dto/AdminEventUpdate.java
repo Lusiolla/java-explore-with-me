@@ -2,7 +2,7 @@ package ru.practicum.explorewm.event.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
-import ru.practicum.explorewm.CustomDateTimeDeserializer;
+import ru.practicum.explorewm.dataio.CustomDateTimeDeserializer;
 
 import java.time.LocalDateTime;
 

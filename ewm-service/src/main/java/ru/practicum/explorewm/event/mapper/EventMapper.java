@@ -1,24 +1,20 @@
-package ru.practicum.explorewm.event;
+package ru.practicum.explorewm.event.mapper;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-import ru.practicum.explorewm.category.CategoryMapper;
+import ru.practicum.explorewm.category.mapper.CategoryMapper;
 import ru.practicum.explorewm.category.model.Category;
+import ru.practicum.explorewm.event.state.State;
 import ru.practicum.explorewm.event.dto.*;
 import ru.practicum.explorewm.event.location.dto.LocationDto;
 import ru.practicum.explorewm.event.model.Event;
-import ru.practicum.explorewm.user.UserMapper;
+import ru.practicum.explorewm.user.mapper.UserMapper;
 import ru.practicum.explorewm.user.dto.UserShort;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Component
-@RequiredArgsConstructor
 public class EventMapper {
 
-    // из create в entity
     public static Event mapToEvent(EventCreate request) {
         Event event = new Event();
         Category category = new Category();
@@ -38,7 +34,6 @@ public class EventMapper {
         return event;
     }
 
-    // из update в entity
     public static Event mapToEvent(EventUpdate request, Event event) {
         event.setAnnotation(request.getAnnotation());
         event.setDescription(request.getDescription());
@@ -49,7 +44,6 @@ public class EventMapper {
         return event;
     }
 
-    // из entity в full
     public static EventFull mapToEventFull(Event event) {
         EventFull response = new EventFull();
         response.setId(event.getId());
@@ -77,7 +71,6 @@ public class EventMapper {
         return response;
     }
 
-    // из entity в afterUpdate
     public static EventDto mapToEventAfterUpdate(Event event) {
         return new EventDto(
                 event.getId(),
@@ -102,7 +95,6 @@ public class EventMapper {
         );
     }
 
-    // из entity в published
     public static EventPublished mapToEventPublished(Event event) {
         return new EventPublished(
                 event.getId(),
@@ -129,7 +121,6 @@ public class EventMapper {
 
     }
 
-    // из entity в short
     public static EventShort mapToEventShort(Event event) {
         EventShort response = new EventShort();
         response.setId(event.getId());
@@ -145,7 +136,6 @@ public class EventMapper {
         return response;
     }
 
-    // из iterable в full
     public static Collection<EventFull> mapToLisEventFull(Iterable<Event> events) {
         Collection<EventFull> response = new ArrayList<>();
         for (Event event : events) {
@@ -154,7 +144,6 @@ public class EventMapper {
         return response;
     }
 
-    // из iterable в short
     public static Collection<EventShort> mapToLisEventShort(Iterable<Event> events) {
         Collection<EventShort> response = new ArrayList<>();
         for (Event event : events) {

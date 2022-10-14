@@ -1,20 +1,19 @@
 package ru.practicum.explorewm.requests.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.practicum.explorewm.event.model.Event;
-import ru.practicum.explorewm.requests.Status;
+import ru.practicum.explorewm.requests.status.Status;
 import ru.practicum.explorewm.user.model.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "participation_requests", schema = "public")
+@Table(name = "participation_requests")
 public class ParticipationRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

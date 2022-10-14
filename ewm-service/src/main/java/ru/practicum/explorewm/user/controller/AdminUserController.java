@@ -3,7 +3,7 @@ package ru.practicum.explorewm.user.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.explorewm.user.UserMapper;
+import ru.practicum.explorewm.user.mapper.UserMapper;
 import ru.practicum.explorewm.user.dto.UserCreate;
 import ru.practicum.explorewm.user.model.User;
 import ru.practicum.explorewm.user.service.UserService;

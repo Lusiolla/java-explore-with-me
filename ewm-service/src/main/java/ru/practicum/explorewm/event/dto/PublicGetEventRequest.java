@@ -2,7 +2,6 @@ package ru.practicum.explorewm.event.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import ru.practicum.explorewm.event.SortRequest;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -21,5 +20,4 @@ public class PublicGetEventRequest {
     private SortRequest sortRequest;
     private int from;
     private int size;
-
 }

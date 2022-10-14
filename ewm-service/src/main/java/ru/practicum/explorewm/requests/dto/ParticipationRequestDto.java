@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.practicum.explorewm.CustomDateTimeSerializer;
-import ru.practicum.explorewm.requests.Status;
+import ru.practicum.explorewm.dataio.CustomDateTimeSerializer;
+import ru.practicum.explorewm.requests.status.Status;
 
 import java.time.LocalDateTime;
 
@@ -19,6 +19,4 @@ public class ParticipationRequestDto {
     private Long event;
     private Long requester;
     private Status status;
-
-
 }

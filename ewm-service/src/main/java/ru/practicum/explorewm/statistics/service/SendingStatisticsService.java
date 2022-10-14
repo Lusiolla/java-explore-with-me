@@ -1,4 +1,4 @@
-package ru.practicum.explorewm.statistics;
+package ru.practicum.explorewm.statistics.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -12,7 +12,10 @@ public class SendingStatisticsService extends BasicStatisticsSender {
 
     private static final String API_PREFIX = "/hit";
 
-    public SendingStatisticsService(@Value("${EXPLORE_WITH_ME_STATS_SERVER_URL}") String serverUrl, RestTemplateBuilder builder) {
+    public SendingStatisticsService(
+            @Value("${EXPLORE_WITH_ME_STATS_SERVER_URL}") String serverUrl,
+            RestTemplateBuilder builder
+    ) {
         super(
                 builder
                         .uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl + API_PREFIX))
@@ -21,7 +24,7 @@ public class SendingStatisticsService extends BasicStatisticsSender {
         );
     }
 
-   public void sendStatistics(EndpointHit endpointHit) {
-       post("", endpointHit);
-   }
+    public void sendStatistics(EndpointHit endpointHit) {
+        post("", endpointHit);
+    }
 }

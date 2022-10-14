@@ -3,17 +3,17 @@ package ru.practicum.explorewm.requests.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.explorewm.event.State;
+import ru.practicum.explorewm.event.state.State;
 import ru.practicum.explorewm.event.model.Event;
 import ru.practicum.explorewm.event.repository.EventRepository;
 import ru.practicum.explorewm.exception.ConditionsNotMetException;
 import ru.practicum.explorewm.exception.ObjectNotFoundException;
-import ru.practicum.explorewm.requests.ParticipationRequestRepository;
-import ru.practicum.explorewm.requests.RequestMapper;
-import ru.practicum.explorewm.requests.Status;
+import ru.practicum.explorewm.requests.repository.ParticipationRequestRepository;
+import ru.practicum.explorewm.requests.mapper.RequestMapper;
+import ru.practicum.explorewm.requests.status.Status;
 import ru.practicum.explorewm.requests.dto.ParticipationRequestDto;
 import ru.practicum.explorewm.requests.model.ParticipationRequest;
-import ru.practicum.explorewm.user.UserRepository;
+import ru.practicum.explorewm.user.repository.UserRepository;
 import ru.practicum.explorewm.user.model.User;
 
 import java.util.Collection;
@@ -28,7 +28,6 @@ public class ParticipationRequestServiceImpl implements ParticipationRequestServ
     private final EventRepository eventRepository;
 
     private final UserRepository userRepository;
-
 
     @Override
     public Collection<ParticipationRequestDto> getUserRequests(Long userId) {
@@ -140,7 +139,7 @@ public class ParticipationRequestServiceImpl implements ParticipationRequestServ
         }
 
         request.setStatus(Status.CONFIRMED);
-        //event.setConfirmedRequests(event.getConfirmedRequests() + 1);
+        event.setConfirmedRequests(event.getConfirmedRequests() + 1);
         eventRepository.save(event);
 
         if (event.getParticipantLimit() == event.getConfirmedRequests()) {

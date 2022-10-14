@@ -1,4 +1,6 @@
-package ru.practicum.explorewm.event;
+package ru.practicum.explorewm.event.validator;
+
+import ru.practicum.explorewm.event.validator.InTwoHours;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

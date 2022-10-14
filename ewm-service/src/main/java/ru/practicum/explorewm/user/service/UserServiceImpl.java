@@ -5,9 +5,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.explorewm.exception.ObjectAlreadyExistException;
-import ru.practicum.explorewm.user.UserRepository;
+import ru.practicum.explorewm.user.repository.UserRepository;
 import ru.practicum.explorewm.user.model.User;
 
+import javax.persistence.PersistenceException;
 import java.util.Collection;
 
 @Service
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
     public User add(User newUser) {
         try {
             return repository.save(newUser);
-        } catch (RuntimeException e) {
+        } catch (PersistenceException e) {
             throw new ObjectAlreadyExistException("email", newUser.getEmail());
         }
     }

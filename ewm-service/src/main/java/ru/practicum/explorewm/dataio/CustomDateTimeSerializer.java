@@ -1,4 +1,4 @@
-package ru.practicum.explorewithme;
+package ru.practicum.explorewm.dataio;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -25,7 +25,6 @@ public class CustomDateTimeSerializer extends StdSerializer<LocalDateTime> {
             JsonGenerator jsonGenerator,
             SerializerProvider serializerProvider
     ) throws IOException {
-
         jsonGenerator.writeString(formatter.format(localDateTime));
     }
 }

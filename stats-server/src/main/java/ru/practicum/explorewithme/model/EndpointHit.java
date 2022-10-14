@@ -1,26 +1,25 @@
 package ru.practicum.explorewithme.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import ru.practicum.explorewithme.CustomDateTimeSerializer;
+import lombok.*;
+import ru.practicum.explorewithme.dataio.CustomDateTimeSerializer;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "ENDPOINT_HITS", schema = "PUBLIC")
+@Table(name = "ENDPOINT_HITS")
 public class EndpointHit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String app;
-    @Column
+    @Column(length = 512)
     private String uri;
     @Column
     private String ip;

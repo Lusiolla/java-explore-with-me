@@ -3,7 +3,7 @@ package ru.practicum.explorewm.event.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.explorewm.event.State;
+import ru.practicum.explorewm.event.state.State;
 import ru.practicum.explorewm.event.dto.*;
 import ru.practicum.explorewm.event.service.EventService;
 

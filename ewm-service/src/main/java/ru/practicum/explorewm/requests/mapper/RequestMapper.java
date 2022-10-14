@@ -1,7 +1,7 @@
-package ru.practicum.explorewm.requests;
-
+package ru.practicum.explorewm.requests.mapper;
 
 import ru.practicum.explorewm.event.model.Event;
+import ru.practicum.explorewm.requests.status.Status;
 import ru.practicum.explorewm.requests.dto.ParticipationRequestDto;
 import ru.practicum.explorewm.requests.model.ParticipationRequest;
 import ru.practicum.explorewm.user.model.User;
@@ -9,7 +9,6 @@ import ru.practicum.explorewm.user.model.User;
 import java.time.LocalDateTime;
 
 public class RequestMapper {
-
     public static ParticipationRequest getNewRequests(User requester, Event event) {
         ParticipationRequest request = new ParticipationRequest();
         request.setRequester(requester);

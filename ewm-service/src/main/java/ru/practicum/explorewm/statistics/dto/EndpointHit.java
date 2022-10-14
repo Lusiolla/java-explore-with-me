@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.practicum.explorewm.CustomDateTimeSerializer;
+import ru.practicum.explorewm.dataio.CustomDateTimeSerializer;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package ru.practicum.explorewithme;
+package ru.practicum.explorewithme.dataio;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -26,5 +26,4 @@ public class CustomDateTimeDeserializer extends StdDeserializer<LocalDateTime> {
         String date = jsonparser.getText();
         return LocalDateTime.from(formatter.parse(date));
     }
-
 }

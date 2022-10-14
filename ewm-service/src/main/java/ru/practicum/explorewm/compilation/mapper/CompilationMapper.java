@@ -1,9 +1,9 @@
-package ru.practicum.explorewm.compilation;
+package ru.practicum.explorewm.compilation.mapper;
 
 import ru.practicum.explorewm.compilation.dto.CompilationDto;
 import ru.practicum.explorewm.compilation.dto.CompilationCreate;
 import ru.practicum.explorewm.compilation.model.Compilation;
-import ru.practicum.explorewm.event.EventMapper;
+import ru.practicum.explorewm.event.mapper.EventMapper;
 import ru.practicum.explorewm.event.model.Event;
 
 import java.util.ArrayList;
@@ -11,7 +11,6 @@ import java.util.Collection;
 
 public class CompilationMapper {
 
-    // из entity в dto
     public static CompilationDto mapToCompilationDto(Compilation compilation) {
         CompilationDto response = new CompilationDto();
         response.setId(compilation.getId());
@@ -21,7 +20,6 @@ public class CompilationMapper {
         return response;
     }
 
-    // из create в entity
     public static Compilation mapToCompilation(CompilationCreate newCompilation, Collection<Event> events) {
         Compilation compilation = new Compilation();
         compilation.setPinned(newCompilation.getPinned());
@@ -30,7 +28,6 @@ public class CompilationMapper {
         return compilation;
     }
 
-    // из iterable в dto
     public static Collection<CompilationDto> mapToLisCompilationDto(Iterable<Compilation> compilations) {
         Collection<CompilationDto> response = new ArrayList<>();
         for (Compilation compilation : compilations) {

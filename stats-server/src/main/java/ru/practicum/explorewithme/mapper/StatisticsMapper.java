@@ -1,4 +1,4 @@
-package ru.practicum.explorewithme;
+package ru.practicum.explorewithme.mapper;
 
 import ru.practicum.explorewithme.dto.EndpointHitCreate;
 import ru.practicum.explorewithme.dto.StatsCount;
