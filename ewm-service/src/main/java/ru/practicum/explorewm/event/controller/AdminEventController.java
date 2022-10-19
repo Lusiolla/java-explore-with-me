@@ -22,6 +22,7 @@ import java.util.Set;
 public class AdminEventController {
 
     private final EventService service;
+
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @GetMapping

@@ -30,7 +30,7 @@ public class PublicEventController {
 
     @GetMapping("{id}")
     public EventFull getById(@NotNull @PathVariable Long id, HttpServletRequest request) {
-        return service.getBtIdPublic(id, request);
+        return service.getByIdPublic(id, request);
     }
 
     @GetMapping

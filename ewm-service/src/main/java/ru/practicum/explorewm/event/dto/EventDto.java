@@ -6,11 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.practicum.explorewm.dataio.CustomDateTimeSerializer;
 import ru.practicum.explorewm.category.model.Category;
+import ru.practicum.explorewm.comment.dto.CommentShort;
 import ru.practicum.explorewm.event.state.State;
 import ru.practicum.explorewm.event.location.dto.LocationDto;
 import ru.practicum.explorewm.user.dto.UserShort;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Data
 @AllArgsConstructor
@@ -31,4 +33,5 @@ public class EventDto {
     private Boolean requestModeration;
     private State state;
     private String title;
+    private Collection<CommentShort> comments;
 }
