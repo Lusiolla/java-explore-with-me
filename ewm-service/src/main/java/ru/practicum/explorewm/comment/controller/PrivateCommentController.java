@@ -7,7 +7,7 @@ import ru.practicum.explorewm.comment.dto.CommentCreate;
 import ru.practicum.explorewm.comment.dto.CommentDto;
 import ru.practicum.explorewm.comment.dto.CommentUpdate;
 import ru.practicum.explorewm.comment.mapper.CommentMapper;
-import ru.practicum.explorewm.CommentService;
+import ru.practicum.explorewm.comment.service.CommentService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

@@ -29,7 +29,7 @@ public class CommentMapper {
 
         return new CommentFull(
                 comment.getId(),
-                comment.getAuthor().getName(),
+                comment.getAuthor().getId(),
                 comment.getEventId(),
                 comment.getText(),
                 comment.getCreatedOn(),

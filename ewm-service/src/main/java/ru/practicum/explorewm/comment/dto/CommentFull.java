@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class CommentFull {
     private long id;
-    private String authorName;
+    private long authorId;
     private long eventId;
     private String text;
     @JsonSerialize(using = CustomDateTimeSerializer.class)

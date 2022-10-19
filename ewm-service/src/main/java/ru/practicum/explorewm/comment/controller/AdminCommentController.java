@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.explorewm.comment.dto.CommentFull;
-import ru.practicum.explorewm.CommentService;
+import ru.practicum.explorewm.comment.service.CommentService;
 
 @RestController
 @RequiredArgsConstructor

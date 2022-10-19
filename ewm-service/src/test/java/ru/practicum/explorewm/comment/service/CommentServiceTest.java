@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.explorewm.CommentService;
 import ru.practicum.explorewm.category.model.Category;
 import ru.practicum.explorewm.comment.dto.CommentDto;
 import ru.practicum.explorewm.comment.dto.CommentFull;
@@ -375,7 +374,7 @@ public class CommentServiceTest {
 
         CommentFull commentDto = new CommentFull(
                 comment4.getId(),
-                comment4.getAuthor().getName(),
+                comment4.getAuthor().getId(),
                 comment4.getEventId(),
                 comment4.getText(),
                 comment4.getCreatedOn(),
@@ -467,7 +466,7 @@ public class CommentServiceTest {
 
         CommentFull commentDto = new CommentFull(
                 comment5.getId(),
-                comment5.getAuthor().getName(),
+                comment5.getAuthor().getId(),
                 comment5.getEventId(),
                 comment5.getText(),
                 comment5.getCreatedOn(),

@@ -1,4 +1,4 @@
-package ru.practicum.explorewm;
+package ru.practicum.explorewm.comment.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -76,6 +76,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional
     public void delete(Long userId, Long commentId) {
         userRepository.findById(userId)
                 .orElseThrow(() -> new ObjectNotFoundException("User", userId));
@@ -88,6 +89,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional
     public void deleteAllByUser(Long userId) {
         repository.deleteByAuthorId(userId);
     }
@@ -108,6 +110,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional
     public CommentFull reject(Long commentId) {
         Comment comment = repository.findById(commentId)
                 .orElseThrow(() -> new ObjectNotFoundException("Comment", commentId));
@@ -116,6 +119,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional
     public Collection<CommentFull> getUserComments(Long userId) {
         return repository.findByAuthorId(userId)
                 .stream()

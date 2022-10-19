@@ -1,4 +1,4 @@
-package ru.practicum.explorewm;
+package ru.practicum.explorewm.comment.service;
 
 import ru.practicum.explorewm.comment.dto.CommentDto;
 import ru.practicum.explorewm.comment.dto.CommentUpdate;
