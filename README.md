@@ -24,7 +24,3 @@
 2. Перейти в каталог с репозиторием проекта
 3. Собрать проект командой: mvn clean package 
 4. Запустить Docker Compose командой: docker compose up
-
-
-https://github.com/Lusiolla/java-explore-with-me/pulls
-
