@@ -2,6 +2,7 @@ package ru.practicum.explorewm.event.model;
 
 import lombok.*;
 import ru.practicum.explorewm.category.model.Category;
+import ru.practicum.explorewm.comment.model.Comment;
 import ru.practicum.explorewm.compilation.model.Compilation;
 import ru.practicum.explorewm.event.location.model.Location;
 import ru.practicum.explorewm.event.state.State;
@@ -56,4 +57,7 @@ public class Event {
     private int views;
     @ManyToMany(mappedBy = "events")
     private Collection<Compilation> compilations;
+    @OneToMany
+    @JoinColumn(name = "event_id")
+    private Collection<Comment> comments;
 }

@@ -90,7 +90,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public EventFull getBtIdPublic(long eventId, HttpServletRequest req) {
+    public EventFull getByIdPublic(long eventId, HttpServletRequest req) {
         Event event = repository.findById(eventId)
                 .orElseThrow(() -> new ObjectNotFoundException("Event", eventId));
         if (event.getState() != State.PUBLISHED) {
@@ -121,7 +121,7 @@ public class EventServiceImpl implements EventService {
         if (!event.getInitiator().getId().equals(userId)) {
             throw new ConditionsNotMetException("The user is not the creator of this event.");
         }
-        return EventMapper.mapToEventAfterUpdate(event);
+        return EventMapper.mapToEventDto(event);
     }
 
     @Override
@@ -137,7 +137,7 @@ public class EventServiceImpl implements EventService {
         event.setCategory(category);
         event.setLocation(saveOrFindLocation(event.getLocation()));
 
-        return EventMapper.mapToEventAfterUpdate(repository.save(event));
+        return EventMapper.mapToEventDto(repository.save(event));
     }
 
     @Override
@@ -150,7 +150,7 @@ public class EventServiceImpl implements EventService {
         Event update = EventMapper.mapToEvent(event, eventFromRepository);
         update.setCategory(category);
 
-        return EventMapper.mapToEventAfterUpdate(repository.save(update));
+        return EventMapper.mapToEventDto(repository.save(update));
     }
 
     @Override
@@ -176,7 +176,7 @@ public class EventServiceImpl implements EventService {
                 update.setState(State.PENDING);
         }
 
-        return EventMapper.mapToEventAfterUpdate(repository.save(update));
+        return EventMapper.mapToEventDto(repository.save(update));
     }
 
     @Override
@@ -195,7 +195,7 @@ public class EventServiceImpl implements EventService {
             event.setState(State.CANCELED);
         }
 
-        return EventMapper.mapToEventAfterUpdate(repository.save(event));
+        return EventMapper.mapToEventDto(repository.save(event));
     }
 
     @Override
@@ -242,7 +242,7 @@ public class EventServiceImpl implements EventService {
             throw new ConditionsNotMetException("The event should not be published.");
         }
         event.setState(State.CANCELED);
-        return EventMapper.mapToEventAfterUpdate(repository.save(event));
+        return EventMapper.mapToEventDto(repository.save(event));
     }
 
     private Location saveOrFindLocation(Location location) {

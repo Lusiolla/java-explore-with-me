@@ -11,7 +11,7 @@ public interface EventService {
 
     Collection<EventShort> getByParamPublic(PublicGetEventRequest request, HttpServletRequest req);
 
-    EventFull getBtIdPublic(long eventId, HttpServletRequest req);
+    EventFull getByIdPublic(long eventId, HttpServletRequest req);
 
     Collection<EventShort> getUserEvents(Long userId, int from, int size);
 

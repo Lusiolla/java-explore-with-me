@@ -2,6 +2,9 @@ package ru.practicum.explorewm.event.mapper;
 
 import ru.practicum.explorewm.category.mapper.CategoryMapper;
 import ru.practicum.explorewm.category.model.Category;
+import ru.practicum.explorewm.comment.dto.CommentShort;
+import ru.practicum.explorewm.comment.mapper.CommentMapper;
+import ru.practicum.explorewm.comment.model.Comment;
 import ru.practicum.explorewm.event.state.State;
 import ru.practicum.explorewm.event.dto.*;
 import ru.practicum.explorewm.event.location.dto.LocationDto;
@@ -12,6 +15,7 @@ import ru.practicum.explorewm.user.dto.UserShort;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 public class EventMapper {
 
@@ -67,11 +71,12 @@ public class EventMapper {
         response.setState(event.getState());
         response.setTitle(event.getTitle());
         response.setPublishedOn(event.getPublishedOn());
+        response.setComments(getListCommentShort(event.getComments()));
 
         return response;
     }
 
-    public static EventDto mapToEventAfterUpdate(Event event) {
+    public static EventDto mapToEventDto(Event event) {
         return new EventDto(
                 event.getId(),
                 event.getAnnotation(),
@@ -91,7 +96,8 @@ public class EventMapper {
                 event.getParticipantLimit(),
                 event.getRequestModeration(),
                 event.getState(),
-                event.getTitle()
+                event.getTitle(),
+                getListCommentShort(event.getComments())
         );
     }
 
@@ -150,5 +156,16 @@ public class EventMapper {
             response.add(mapToEventShort(event));
         }
         return response;
+    }
+
+    public static Collection<CommentShort> getListCommentShort(Collection<Comment> comments) {
+        if (comments == null) {
+            return new ArrayList<>();
+        }
+        return comments
+                .stream()
+                .filter(comment -> comment.getState() == State.PUBLISHED)
+                .map(CommentMapper::mapToCommentShort)
+                .collect(Collectors.toList());
     }
 }

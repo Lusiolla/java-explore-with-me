@@ -13,7 +13,7 @@ public class SendingStatisticsService extends BasicStatisticsSender {
     private static final String API_PREFIX = "/hit";
 
     public SendingStatisticsService(
-            @Value("${EXPLORE_WITH_ME_STATS_SERVER_URL}") String serverUrl,
+            @Value("http://stats-server:9090") String serverUrl,
             RestTemplateBuilder builder
     ) {
         super(
